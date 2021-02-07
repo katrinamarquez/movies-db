@@ -5,7 +5,6 @@ import _ from 'lodash';
 const Pagination = props => {
   // need to have an array of page numbers
   const { itemsCount, pageSize, currentPage, onPageChange } = props;
-  console.log(currentPage);
 
   const pagesCount = Math.ceil(itemsCount / pageSize);
   // + 1 to include the last page
