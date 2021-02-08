@@ -1,8 +1,7 @@
 import React from 'react';
 
-const ListGroup = props => {
+const ListGroup = ({ items, textProperty, valueProperty, onItemSelect, selectedItem }) => {
   // Object destructuring 
-  const { items, textProperty, valueProperty, onItemSelect, selectedItem } = props; 
 
   return (
   <ul className="list-group">

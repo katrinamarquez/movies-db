@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-const Pagination = props => {
+const Pagination = ({ itemsCount, pageSize, currentPage, onPageChange }) => {
   // need to have an array of page numbers
-  const { itemsCount, pageSize, currentPage, onPageChange } = props;
 
   const pagesCount = Math.ceil(itemsCount / pageSize);
   // + 1 to include the last page
