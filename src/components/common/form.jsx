@@ -22,7 +22,7 @@ class Form extends Component {
     const obj = { [name]: value };
     const schema = { [name]: this.schema[name] };
     const { error } = Joi.validate(obj, schema);
-    return error ? error.details[0].message : null; 
+    return error ? error.details[0].message : null;
   };
 
   handleSubmit = e => {
@@ -40,14 +40,14 @@ class Form extends Component {
   };
 
   handleChange = ({ currentTarget: input }) => {
-    const errors = {...this.state.errors};
+    const errors = { ...this.state.errors };
     const errorMessage = this.validateProperty(input);
     if (errorMessage) errors[input.name] = errorMessage;
     else delete errors[input.name];
 
-    // Do not want to update state directly. We want to clone it and then have react update the state
-    const data = {...this.state.data}
+    const data = { ...this.state.data };
     data[input.name] = input.value;
+
     this.setState({ data, errors });
   };
 
@@ -71,6 +71,22 @@ class Form extends Component {
         error={errors[name]}
       /> 
     )};
+
+    renderSelect(name, label, options) {
+      const { data, errors } = this.state;
+
+      return (
+        <Input 
+          type={type}
+          name={name} 
+          value={data[name]} 
+          label={label} 
+          options={options}
+          onChange={this.handleChange} 
+          error={errors[name]}
+        /> 
+      )
+    }
 };
  
 export default Form;
